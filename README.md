@@ -2,6 +2,7 @@
   - oc login --token= ... --server= ....
   - oc project argo-test
   - oc apply -f argocd-install.yaml -n argo-test
+  - update role-id & secret_id  in argocd-vault-plugin-credentials.yaml befor deploy
   - oc apply -f argocd-vault-plugin-credentials.yaml -n argo-test
   - oc apply -f argocd-helm-values.yaml -n argo-test
   - oc apply -f argocd-vault-plugin-cmp.yaml -n argo-test
@@ -24,12 +25,6 @@
    - sudo update-ca-certificates
    - export VAULT_CACERT=/path/to/vault-cert.crt
    - vault login -address=..vault URL....
-   - vault write auth/approle/role/vault-plugin-role \
-    token_type=service \
-    secret_id_ttl=10m \
-    token_num_uses=10 \
-    token_ttl=20m \
-    token_max_ttl=30m \
-    secret_id_num_uses=40
+   - vault write auth/approle/role/vault-plugin-role  token_type=service  secret_id_ttl=10m  token_num_uses=10  token_ttl=20m  token_max_ttl=30m  token_max_ttl=30m  secret_id_num_uses=40
    -  vault read auth/approle/role/vault-plugin-role/role-id
    -  vault write -f auth/approle/role/vault-plugin-role/secret-id
