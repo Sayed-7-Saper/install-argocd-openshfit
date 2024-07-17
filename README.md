@@ -1,4 +1,6 @@
 # install-argocd-openshfit
+  - oc login --token= ... --server= ....
+  - oc project argo-test
   - oc apply -f argocd-install.yaml -n argo-test
   - oc apply -f argocd-vault-plugin-credentials.yaml -n argo-test
   - oc apply -f argocd-helm-values.yaml -n argo-test
@@ -9,6 +11,7 @@
 
  # to deploy Vault in openShfit  Cluster
    - oc create namespace vault
+   - oc login --token= ... --server= ....
    - oc project vault
    - helm repo add hashicorp https://helm.releases.hashicorp.com
    - helm search repo hashicorp/vault
